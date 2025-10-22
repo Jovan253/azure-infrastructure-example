@@ -1,0 +1,9 @@
+# Ignore Virtual Environments
+**/.venv/
+**/venv/
+
+# Ignore the terraform init config file
+**/.terraform/
+
+**/.terraform*
+**/terraform*
