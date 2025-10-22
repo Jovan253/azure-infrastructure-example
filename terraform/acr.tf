@@ -8,4 +8,3 @@ module "acr" {
   admin_enabled                 = var.acr_admin_enabled
   public_network_access_enabled = var.acr_public_network_access_enabled
 }
-# "client_secret": "tXN8Q~_xh9XF8LX3I13YLcSglLd0.xceh3ek~cQJ",
