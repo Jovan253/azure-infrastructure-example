@@ -5,6 +5,16 @@
 This Repository gives a simple example of deploying infrastructure as code to Azure.\
 It's purposes is to create a simple Web application that will be hosted.
 
+# Deployment Order
+
+Note: Usually I would do Separation via repositories but so it's easier to view it's all in one repository. 
+
+Regardless the order to deploy the directories is the following:
+1. management-tf
+2. app
+3. roles-tf
+4. app-tf
+
 ## Key Goals
 
 1. ACR
