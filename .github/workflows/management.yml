@@ -2,10 +2,11 @@ name: "Terraform Management Pipeline"
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    # paths:
-    #   - 'management-tf/**'
+    inputs:
+        environment:
+          description: "Environment (dev/staging/prod)"
+          required: true
+          default: "dev"
 
 env:
   TF_VAR_client_secret: ${{ vars.AZURE_CLIENT_SECRET }}    
@@ -22,4 +23,4 @@ jobs:
       - run: terraform init
       - run: terraform fmt
       # - run: terraform plan
-      - run: terraform apply -auto-approve
+      - run: terraform apply -auto-approve -var-file="variables/${{ github.event.inputs.environment }}.tfvars.json"
