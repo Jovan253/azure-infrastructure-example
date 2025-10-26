@@ -1,17 +1,19 @@
-name:
-on:
-  workflow_dispatch:
+name: "Terraform Management Pipeline"
+
+on:  
   push:
     paths:
       - 'management-tf/**'
 
+env:
+  TF_VAR_client_secret: ${{ vars.AZURE_CLIENT_SECRET }}    
+
 jobs:
   deploy:
-    runs-on: ubuntu-latest
-    env:
-      TF_VAR_client_secret: ${{ vars.AZURE_CLIENT_SECRET }}    
+    runs-on: ubuntu-latest        
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
       - run: terraform init
+      - run: terraform fmt
       - run: terraform apply -auto-approve
