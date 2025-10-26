@@ -1,0 +1,4 @@
+name: "Application Image Build And Push Pipeline"
+
+on:
+  workflow_dispatch:    
