@@ -9,10 +9,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      TF_VAR_client_secret: ${{ vars.AZURE_CLIENT_SECRET }}
-    defaults:
-      run:
-        working_directory: management-tf
+      TF_VAR_client_secret: ${{ vars.AZURE_CLIENT_SECRET }}    
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
