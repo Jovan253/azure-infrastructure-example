@@ -1,0 +1,20 @@
+name:
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'management-tf/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      TF_VAR_client_secret: ${{ vars.AZURE_CLIENT_SECRET }}
+    defaults:
+      run:
+        working_directory: management-tf
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform init
+      - run: terraform apply -auto-approve
