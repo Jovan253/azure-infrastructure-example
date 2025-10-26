@@ -3,10 +3,10 @@ name: "Terraform Management Pipeline"
 on:
   workflow_dispatch:
     inputs:
-        environment:
-          description: "Environment (dev/staging/prod)"
-          required: true
-          default: "dev"
+      environment:
+        description: "Environment (dev/staging/prod)"
+        required: true
+        default: "dev"
 
 env:
   TF_VAR_client_secret: ${{ vars.AZURE_CLIENT_SECRET }}    
