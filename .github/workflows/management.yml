@@ -12,10 +12,14 @@ env:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest        
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: management-tf        
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
       - run: terraform init
       - run: terraform fmt
+      # - run: terraform plan
       - run: terraform apply -auto-approve
