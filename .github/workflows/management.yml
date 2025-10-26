@@ -1,9 +1,11 @@
 name: "Terraform Management Pipeline"
 
-on:  
+on:
+  workflow_dispatch:
   push:
-    paths:
-      - 'management-tf/**'
+    branches: [main]
+    # paths:
+    #   - 'management-tf/**'
 
 env:
   TF_VAR_client_secret: ${{ vars.AZURE_CLIENT_SECRET }}    
