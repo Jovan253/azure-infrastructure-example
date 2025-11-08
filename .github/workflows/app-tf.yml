@@ -6,6 +6,7 @@ on:
       environment:
         description: "Environment (dev/staging/prod)"
         required: true
+        type: choice
         default: "dev"
         options:
           - "dev"
@@ -13,6 +14,7 @@ on:
       action:
         description: "Action to perform (apply/destroy)"
         required: true
+        type: choice
         default: "apply"
         options:
           - "apply"
