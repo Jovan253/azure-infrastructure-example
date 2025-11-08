@@ -2,6 +2,11 @@ name: "Application Image Build And Push Pipeline"
 
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment (dev/staging/prod)"
+        required: true
+        default: "dev"
 
 env:
   ACR_NAME: devuksouthacr # Make this more dynamic in the future (work for other envs etc)  
