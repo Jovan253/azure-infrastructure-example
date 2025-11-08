@@ -33,6 +33,7 @@ jobs:
       - uses: hashicorp/setup-terraform@v3
       - run: terraform init
       - run: terraform fmt
+      - run: terraform plan -var-file="variables/${{ github.event.inputs.environment }}.tfvars.json"
       - name: Terraform Apply/Destroy
         run: |
           if [ "${{ github.event.inputs.action }}" = "apply" ]; then
