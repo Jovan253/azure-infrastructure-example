@@ -8,9 +8,19 @@ on:
         required: true
         default: "dev"
 
+env:
+  TF_VAR_client_secret: ${{ secrets.AZURE_CLIENT_SECRET }}    
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: app-tf    
+        working-directory: app-tf
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform init
+      - run: terraform fmt
+      # - run: terraform plan
+      - run: terraform apply -auto-approve -var-file="variables/${{ github.event.inputs.environment }}.tfvars.json"
