@@ -9,8 +9,7 @@ on:
         type: choice
         default: "dev"
         options:
-          - "dev"
-          - "test"
+          - "dev"          
       action:
         description: "Action to perform (apply/destroy)"
         required: true
