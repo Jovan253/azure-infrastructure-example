@@ -1,4 +1,11 @@
 name: "Application Image Build And Push Pipeline"
 
 on:
-  workflow_dispatch:    
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
