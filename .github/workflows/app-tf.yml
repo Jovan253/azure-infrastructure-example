@@ -7,10 +7,16 @@ on:
         description: "Environment (dev/staging/prod)"
         required: true
         default: "dev"
+        options:
+          - "dev"
+          - "test"
       action:
         description: "Action to perform (apply/destroy)"
         required: true
         default: "apply"
+        options:
+          - "apply"
+          - "destroy"
 
 env:
   TF_VAR_client_secret: ${{ secrets.AZURE_CLIENT_SECRET }}    
