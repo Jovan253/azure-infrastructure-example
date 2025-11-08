@@ -7,3 +7,10 @@ on:
         description: "Environment (dev/staging/prod)"
         required: true
         default: "dev"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app-tf    
