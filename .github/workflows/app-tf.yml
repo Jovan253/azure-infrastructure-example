@@ -7,6 +7,10 @@ on:
         description: "Environment (dev/staging/prod)"
         required: true
         default: "dev"
+      action:
+        description: "Action to perform (apply/destroy)"
+        required: true
+        default: "apply"
 
 env:
   TF_VAR_client_secret: ${{ secrets.AZURE_CLIENT_SECRET }}    
@@ -22,5 +26,10 @@ jobs:
       - uses: hashicorp/setup-terraform@v3
       - run: terraform init
       - run: terraform fmt
-      # - run: terraform plan
-      - run: terraform apply -auto-approve -var-file="variables/${{ github.event.inputs.environment }}.tfvars.json"
+      - name: Terraform Apply/Destroy
+        run: |
+          if [ "${{ github.event.inputs.action }}" = "apply" ] then;
+            terraform apply -auto-approve -var-file="variables/${{ github.event.inputs.environment }}.tfvars.json"
+          else
+            terraform destroy -auto-approve -var-file="variables/${{ github.event.inputs.environment }}.tfvars.json"
+          fi
